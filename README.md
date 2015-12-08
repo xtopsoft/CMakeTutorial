@@ -13,4 +13,8 @@
 * 编译运行tutorial.cxx(计算sqrt值)
 * 添加版本号
 
+## Step 2
+* 添加库(MathFunctions)
+
+
 
