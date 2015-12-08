@@ -11,4 +11,6 @@
 
 ## Step 1
 * 编译运行tutorial.cxx(计算sqrt值)
+* 添加版本号
+
 
