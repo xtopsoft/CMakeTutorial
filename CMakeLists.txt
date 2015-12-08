@@ -30,3 +30,7 @@ endif (USE_MYMATH)
 # add the executable
 add_executable (tutorial tutorial.cxx)
 target_link_libraries (tutorial  ${EXTRA_LIBS})
+
+# add the install targets
+install (TARGETS tutorial DESTINATION bin)
+install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)

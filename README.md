@@ -17,4 +17,8 @@
 * 添加库(MathFunctions)
 * option
 
+## Setp 3
+* install
+
+
 
