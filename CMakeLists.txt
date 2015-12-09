@@ -43,13 +43,17 @@ install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 # enable testing
 enable_testing ()
 
+# does the application run
+add_test (TutorialRuns Tutorial 25)
+
+# does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties (TutorialUsage PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number")
+
 macro (do_test arg result)
 	add_test (TutorialComp${arg} Tutorial ${arg})
 	set_tests_properties (TutorialComp${arg} PROPERTIES PASS_REGULAR_EXPRESSION ${result})
 endmacro (do_test)
-
-# does the application run
-add_test (TutorialRuns Tutorial 25)
 
 # does it sqrt of 25
 do_test(25, "25 is 5")
@@ -60,6 +64,5 @@ do_test(-25, "-25 is 0")
 # does it handle small numbers
 do_test(0.0001, "0.0001 is 0.01")
 
-# does the usage message work?
-add_test (TutorialUsage Tutorial)
-set_tests_properties (TutorialUsage PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number")
+
+

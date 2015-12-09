@@ -2,6 +2,7 @@
 #include <math.h>
 #include "MathFunctions.h"
 #include "TutorialConfig.h"
+#include "Table.h"
 
 // a hack square root calculation using simple operations
 double mysqrt(double x)
@@ -12,14 +13,15 @@ double mysqrt(double x)
     }
 
   double result;
-  
-  // if we have both log and exp then use them
-#if defined (HAVE_LOG) && defined (HAVE_EXP)
-  result = exp(log(x)*0.5);
-  fprintf(stdout,"Computing sqrt of %g to be %g using log\n",x,result);
-#else // otherwise use an iterative approach
   double delta;  
+
   result = x;
+
+  // use the table to help find an initial value
+  if (x > 0 and x < 10)
+    {
+    result = sqrtTable[static_cast<int>(x)];
+    }
 
   // do ten iterations
   int i;
@@ -33,7 +35,6 @@ double mysqrt(double x)
     result = result + 0.5*delta/result;
     fprintf(stdout,"Computing sqrt of %g to be %g\n",x,result);
     }
-#endif
 
   return result;
 }
